@@ -1,0 +1,274 @@
+/*--- Template ---*/
+
+:root{
+    --background : #2C68F6;
+    --tiles : #648ACF;
+    --tiles2 : rgba(255, 255, 255, 0.1);
+    --text : #FFFFFF; 
+    --radius: 15px; 
+    --gap: 1rem; 
+    --shadow: 0 5px 18px rgba(0, 0, 0, 0.28);
+    --logo-WnH: 21px;
+}
+
+* { box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+html{ font-size: 16px; }
+body {
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0 10px 10px;
+    padding-bottom: 40px;
+}
+
+img{ display: block; 
+    max-width: 100%;
+}
+
+/*--- container ---*/
+
+#main-container {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 15px;
+}
+
+/*--- Header ---*/
+
+.main-header{
+    max-width: 1175px;
+    margin: 24px auto 12px;
+    padding: 18px 18px;
+    background: var(--tiles);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.main-header .personal-portfolio h1{
+    font-size: 60px;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+}
+
+/*--- Tiles ---*/
+
+section {
+    background: var(--tiles);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+}
+
+section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+section p, section li {
+    color: var(--text)
+}
+
+/*--- Layout Assignment ---*/
+
+.Profile { 
+    grid-area: profile;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.About-Me { 
+    grid-area: about;
+}
+
+.Contacts{
+    grid-area: contacts;
+}
+
+.Projects {
+    grid-area: projects;
+}
+
+.Skills {
+    grid-area: skills;
+}
+
+.Biodata {
+    grid-area: biodata;
+}
+
+/*--- Layout Mapping ---*/
+
+main {
+    display:grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr ;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "profile about contacts"
+    "profile skills skills"
+    "biodata projects projects";
+    gap: var(--gap)
+}
+
+/*--- About ---*/
+
+.About-Me-Fill p {
+    font-size: 1rem;
+    background: var(--tiles2);
+    border-radius: var(--radius);
+    padding: 0.6rem;
+}
+
+/*--- Contacts ---*/
+
+.Contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.Contact-list {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--tiles2);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.6rem;
+}
+
+.Contact-logo {
+    width: var(--logo-WnH);
+    height: var(--logo-WnH);
+}
+
+/*--- Projects ---*/
+
+.Projects-Fill ul {
+    list-style: none;
+}
+
+.Projects-Fill li {
+    margin: 0.25rem 0;
+    background: var(--tiles2);
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius);
+}
+
+/*--- Skills ---*/
+
+.Skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+}
+
+.Skills-Title {
+    grid-column: 1 / -1;
+}
+
+.Soft-Skills-Fill, .Hard-Skills-Fill {
+    background: var(--tiles2);
+    border-radius: var(--radius);
+    padding: 1rem 1rem;
+}
+
+.Soft-Skills-Fill ul, .Hard-Skills-Fill ul {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.Soft-Skills-Fill-Title h3, .Hard-Skills-Fill-Title h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+/*--- Profile ---*/
+
+.Profile-Image {
+    width: 100%;
+}
+
+.Profile-Pic {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/*--- Biodata ---*/
+
+.Biodata ul {
+    list-style: none;
+}
+
+.Biodata li {
+    padding: 0.35rem 0.6rem;
+    background: var(--tiles2);
+    border-radius: var(--radius);
+    margin-bottom: 0.4rem;
+}
+
+/*--- Tablet ---*/
+
+@media (max-width: 1024px) {
+    main{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "profile about"
+        "biodata contacts"
+        "skills skills"
+        "projects projects";
+    }
+    .Skills {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*--- mobile ---*/
+
+@media (max-width: 768px) {
+    #main-container {
+        padding: 0 12px;
+    }
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "profile"
+        "biodata"
+        "about"
+        "contacts"
+        "skills"
+        "projects";
+    }
+    section {
+        padding: 14px
+    }
+    .main-header {
+        padding: 16px 14px;
+    }
+    .Contact-container {
+        gap: 0.5rem
+    }
+    .Profile-Pic {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/*--- Footer ---*/
+.main-footer {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 16px 15px;
+    background: var(--tiles2);
+    border-radius: var(--radius);
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text);
+}
